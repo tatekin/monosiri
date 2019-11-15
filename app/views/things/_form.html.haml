@@ -1,0 +1,24 @@
+.home
+  = link_to "monosiri", root_path, class: "home__text"
+
+- if current_page?(new_thing_path)
+  .things__title
+    mono追加
+
+- elsif current_page?(edit_thing_path)
+  .things__title
+    mono編集
+
+= flash[:alert]
+
+= form_with model: thing, class: "form" do |form|
+  .things__text
+    monoの名前
+  = form.text_field :name, class: "form__text", size: "100"
+  .things__text
+    monoの個数
+  = form.number_field :number, class: "form__number", min: 1
+  .things__text
+    カテゴリー
+  = form.collection_select(:category_id, @categories, :id, :name, { prompt: "カテゴリーを選択" }, { class: "form__category" })
+  = form.submit "決定", class: "form__submit"

@@ -1,0 +1,37 @@
+.header
+  .home
+    = link_to "monosiri", root_path, class: "home__text"
+    新カテゴリー作成
+    = form_with model: @category, id: "category-form" do |form|
+      = form.text_field :name
+      = form.submit "作成"
+    = link_to "mono追加", new_thing_path, class: "new__things"
+  .total
+    総数
+    = @numbers
+
+= flash[:success]
+
+- @categories.each.with_index(1) do |category, index|
+  .contents
+    .hidden_box
+      %label{for: "label#{index}"}
+        .content
+          .thing
+            = category.name
+          .number
+            = category.things.sum(:number)
+          - if category.things.present?
+            .label_font
+              %i{ class: "fas fa-angle-down fa-2x font" }
+      %input{type: "checkbox", id: "label#{index}", class: "check_box"}
+      .hidden_show
+        - category.things.each do |thing|
+          .content
+            .thing
+              = thing.name
+            .number
+              ×
+              = thing.number
+            = link_to "編集", edit_thing_path(thing), class: "edit__things"
+            = link_to "削除", thing_path(thing), class: "destroy__things", method: :delete, data: { confirm: "削除しますか？"}
