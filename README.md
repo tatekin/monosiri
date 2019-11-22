@@ -1,24 +1,36 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# monosiri
 
-Things you may want to cover:
+ものを管理するアプリです。
 
-* Ruby version
+## 説明
 
-* System dependencies
+自分の持ち物を把握することで、無駄な買い物を減らします。
+![monosiri](https://gyazo.com/135589df0b38e0fe2f3d8df5e1990f2f.png)
+## 使い方
 
-* Configuration
+カテゴリーを作成します。
+ものを追加していきます。
 
-* Database creation
+## 機能
 
-* Database initialization
+- mono一覧機能
+- mono新規追加機能
+- mono編集機能
+- mono削除機能
+- カテゴリー作成機能
 
-* How to run the test suite
+## 工夫した点
+- シンプル&使いやすいを意識。
+- 使い回せるviewが多かったので部分テンプレートを多用。
+- 部分テンプレートの中でcurrent_page?を使い、表示させる文字を場合分け。
+- カテゴリー作成は非同期
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## 開発環境
 
-* ...
+- Ruby (2.5.1)
+- Rails (5.2.3)
+- JavaScript
+- jQuery
+- MySQL
